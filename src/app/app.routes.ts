@@ -1,2 +1,22 @@
 import { Routes } from '@angular/router';
-export const routes: Routes = [];
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+
+
+export const routes: Routes = [
+  {
+    path: 'products',
+    component: ProductListComponent,
+    children: [
+      {
+        path: 'products/:id',
+        component: ProductDetailComponent,
+      },
+      {
+        path: 'products',
+        component: PageNotFoundComponent,
+      },
+    ],
+  },
+];
