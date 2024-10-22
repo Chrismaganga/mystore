@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout-form',
-  standalone: true,
-  imports: [],
   templateUrl: './checkout-form.component.html',
-  styleUrl: './checkout-form.component.css'
+  styleUrls: ['./checkout-form.component.css']
 })
-export class CheckoutFormComponent {
+export class CheckoutFormComponent implements OnInit {
+  checkoutForm!: FormGroup;
 
+  ngOnInit() {
+    this.checkoutForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      paymentMethod: new FormControl('', Validators.required)
+    });
+  }
+
+  onSubmit() {
+    if (this.checkoutForm.valid) {
+      console.log('Form Submitted!', this.checkoutForm.value);
+    }
+  }
 }

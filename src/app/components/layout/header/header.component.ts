@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+onSearch($event: Event) {
+throw new Error('Method not implemented.');
+}
 
 }
+
